@@ -15,7 +15,7 @@ import * as MediaLibrary from 'expo-media-library';
 import * as FileSystem from 'expo-file-system/legacy';
 
 
-export default function Inicio() {
+export default function Inicio({ navigation }) {
 
   const [coluna1, setColuna1] = useState([]);
   const [coluna2, setColuna2] = useState([]);
@@ -24,7 +24,7 @@ export default function Inicio() {
   useEffect(() => {
     async function carregar() {
       const res = await fetch(
-        "https://api.unsplash.com/photos?page=5&per_page=30&client_id=n716mTyoxj5RTGdu0b3V0yX9RLpIlIEsHhhmEE1Znjo"
+        "https://api.unsplash.com/photos?page=5&per_page=12&client_id=n716mTyoxj5RTGdu0b3V0yX9RLpIlIEsHhhmEE1Znjo"
       );
       const data = await res.json();
 
@@ -63,10 +63,19 @@ async function baixar(url) {
   console.log('Salvo na galeria!');
 }
   return (
+
+      
+
     <View style={estilos.geral}>
       <View style={estilos.header}>
         <Text style={estilos.title}>PONT | WEAR</Text>
-        <Ionicons name="search" size={25} color="#ffffff" />
+
+        <View style={{display:"flex", flexDirection:"row", gap:10 }}>
+          <TouchableOpacity  onPress={() => navigation.navigate('Pessoal')}>
+             <Ionicons name="person-circle-sharp" size={28} color="#ffffff" />
+          </TouchableOpacity>
+          <Ionicons name="search" size={28} color="#ffffff" />
+        </View>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -183,6 +192,7 @@ const estilos = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 15,
     alignItems: "center",
+    padding:12
   },
   title: {
     color: "white",
@@ -215,16 +225,17 @@ const estilos = StyleSheet.create({
     top:-50
   },
   cr: {
-    width: 320,
-    height: 370,
+    width: 300,
+    height: 400,
     backgroundColor: "white",
-    borderRadius: 5,
+    borderRadius: 10,
     display: "flex",
     flexDirection: "row",
   },
   kr: {
     width: "85%",
     height: "100%",
+    
   },
   sqr: {
     width: "15%",
