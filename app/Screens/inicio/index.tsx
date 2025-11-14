@@ -10,13 +10,10 @@ import {
 } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
-import * as MediaLibrary from 'expo-media-library';
-
-import * as FileSystem from 'expo-file-system/legacy';
-
+import * as MediaLibrary from "expo-media-library";
+import * as FileSystem from "expo-file-system/legacy";
 
 export default function Inicio({ navigation }) {
-
   const [coluna1, setColuna1] = useState([]);
   const [coluna2, setColuna2] = useState([]);
   const [dados, setDados] = useState<any | null>(null);
@@ -57,22 +54,22 @@ export default function Inicio({ navigation }) {
     setDados(data);
   }
 
-async function baixar(url) {
-  const { uri } = await FileSystem.downloadAsync(url, FileSystem.documentDirectory + 'foto.jpg');
-  await MediaLibrary.saveToLibraryAsync(uri);
-  console.log('Salvo na galeria!');
-}
+  async function baixar(url) {
+    const { uri } = await FileSystem.downloadAsync(
+      url,
+      FileSystem.documentDirectory + "foto.jpg"
+    );
+    await MediaLibrary.saveToLibraryAsync(uri);
+    console.log("Salvo na galeria!");
+  }
   return (
-
-      
-
     <View style={estilos.geral}>
       <View style={estilos.header}>
         <Text style={estilos.title}>PONT | WEAR</Text>
 
-        <View style={{display:"flex", flexDirection:"row", gap:10 }}>
-          <TouchableOpacity  onPress={() => navigation.navigate('Pessoal')}>
-             <Ionicons name="person-circle-sharp" size={28} color="#ffffff" />
+        <View style={{ display: "flex", flexDirection: "row", gap: 10 }}>
+          <TouchableOpacity onPress={() => navigation.navigate("Pessoal")}>
+            <Ionicons name="person-circle-sharp" size={28} color="#ffffff" />
           </TouchableOpacity>
           <Ionicons name="search" size={28} color="#ffffff" />
         </View>
@@ -192,7 +189,7 @@ const estilos = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 15,
     alignItems: "center",
-    padding:12
+    padding: 12,
   },
   title: {
     color: "white",
@@ -222,7 +219,7 @@ const estilos = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    top:-50
+    top: -50,
   },
   cr: {
     width: 300,
@@ -235,7 +232,6 @@ const estilos = StyleSheet.create({
   kr: {
     width: "85%",
     height: "100%",
-    
   },
   sqr: {
     width: "15%",
